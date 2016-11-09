@@ -77,7 +77,7 @@ export default class PageOne extends React.Component {
     return (
       <View>
         <View>
-          <Title text='Grocery List' />
+          <Title text='Anonymous Chat App' />
           <ListView dataSource={this.state.dataSource} renderRow={this._renderItem.bind(this)} />
           <TextInput
             style={{height: 40}}
