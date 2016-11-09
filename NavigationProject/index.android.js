@@ -15,6 +15,7 @@ import {
 
 import PageOne from './_section/page.one'
 import PageTwo from './_section/page.two'
+import PageThree from './_section/page.three'
 
 export default class NavigationProject extends Component {
   _renderScrene(route, navigator){
@@ -22,6 +23,8 @@ export default class NavigationProject extends Component {
       return <PageOne navigator={navigator} />
     } else if(route.id == 2){
       return <PageTwo navigator={navigator} />
+    } else if(route.id == 3){
+      return <PageThree navigator={navigator} />
     }
   }
 
