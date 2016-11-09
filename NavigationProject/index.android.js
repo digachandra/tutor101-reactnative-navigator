@@ -4,50 +4,35 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  Navigator
+} from 'react-native'
+
+import PageOne from './_section/page.one'
+import PageTwo from './_section/page.two'
 
 export default class NavigationProject extends Component {
+  _renderScrene(route, navigator){
+    if(route.id ==1){
+      return <PageOne navigator={navigator} />
+    } else if(route.id == 2){
+      return <PageTwo navigator={navigator} />
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      <Navigator
+        initialRoute={{id:1}}
+        renderScene={this._renderScrene}
+      />
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('NavigationProject', () => NavigationProject);
