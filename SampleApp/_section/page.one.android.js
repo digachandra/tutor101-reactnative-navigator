@@ -3,6 +3,7 @@ import {
   ListView,
   View,
   Text,
+  TextInput,
   TouchableOpacity
 } from 'react-native'
 import * as firebase from 'firebase'
@@ -63,6 +64,11 @@ export default class PageOne extends React.Component {
     )
   }
 
+  _addItem() {
+    this.itemsRef.push({title: this.state.textInput})
+    this.setState({textInput: ''})
+  }
+
   componentDidMount() {
     this._listenForItems(this.itemsRef)
   }
@@ -73,7 +79,13 @@ export default class PageOne extends React.Component {
         <View>
           <Title text='Grocery List' />
           <ListView dataSource={this.state.dataSource} renderRow={this._renderItem.bind(this)} />
-          <ActionButton title='Add' />
+          <TextInput
+            style={{height: 40}}
+            placeholder="Type here to translate!"
+            value={this.state.textInput}
+            onChangeText={(text) => this.setState({textInput: text})}
+          />
+          <ActionButton title='Add' onPress={this._addItem.bind(this)} />
         </View>
       </View>
       // <View style={{padding:60}}>
