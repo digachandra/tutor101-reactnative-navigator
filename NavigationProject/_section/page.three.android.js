@@ -17,7 +17,7 @@ export default class PageThree extends Component {
   }
 
   _handlePressHome(){
-    this.props.navigator.push({id:1})
+    this.props.navigator.popN(2)
   }
 
   render(){
